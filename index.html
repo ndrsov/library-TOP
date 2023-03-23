@@ -8,6 +8,30 @@
     <title>The Odin Project LIbrary</title>
   </head>
   <body>
+    <header>
+      <h1>My Library</h1>
+      <button class="btn" id="btn-open-form">Add a new boook</button>
+      <div class="form-container hidden">
+        <form>
+          <label for="title">Title: </label>
+          <input type="text" name="title" id="title" required />
+          <label for="author">Author: </label>
+          <input type="text" name="author" id="author" required />
+          <label for="year">Year: </label>
+          <input type="number" name="year" id="year" required />
+          <label for="readed">Have you finish this book?</label>
+          <input type="checkbox" name="readed" id="readed" />
+          <button type="submit" class="btn btn-sm" id="btn-submit-form">
+            Add
+          </button>
+        </form>
+      </div>
+    </header>
+    <div class="books-container" id="books-container">
+      <div class="book-card">
+        <p class="book-title">This is the dummy title</p>
+      </div>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
