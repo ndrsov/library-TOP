@@ -2,21 +2,28 @@
 
 :root {
   /* CSS HEX */
-  --black: #000000ff;
-  --oxford-blue: #14213dff;
-  --orange-web: #fca311ff;
+  --black: #000000;
+  --oxford-blue: #14213d;
+  --orange-web: #fca311;
   --orange-dark: #d4890e;
-  --platinum: #e5e5e5ff;
-  --white: #ffffffff;
+  --platinum: #e5e5e5;
+  --white: #ffffff;
 }
 
-* {
+html {
+  font-size: 100%;
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 body {
+  margin: 0;
+  padding: 0;
   font-family: 'Rubik', sans-serif;
   background-image: linear-gradient(
     120deg,
@@ -32,7 +39,6 @@ body {
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  margin: 2rem;
 }
 
 h1 {
@@ -60,11 +66,16 @@ h1 {
 }
 
 .btn-sm {
+  font-weight: bold;
   padding: 0.3rem 1rem;
   font-size: 1.5rem;
+  letter-spacing: 2px;
 }
 
+/* Form styles  */
+
 .form-container {
+  max-width: 450px;
   font-size: 1.5rem;
   background-color: var(--white);
   border-radius: 30px;
@@ -84,11 +95,11 @@ h1 {
 .form-control {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   font-weight: bold;
   line-height: 1.1;
 }
-
 .form-control input {
   outline: none;
   background-color: var(--platinum);
@@ -108,6 +119,8 @@ input[type='checkbox'] {
   height: 1.5rem;
 }
 
+/* Books container and book element */
+
 .books-container {
   background-color: var(--white);
   border-radius: 30px;
@@ -119,22 +132,4 @@ input[type='checkbox'] {
   gap: 2rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
-
-.book-card {
-  background-color: var(--platinum);
-  width: 200px;
-  height: 300px;
-  padding: 1rem;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
-
-.book-card p {
-  font-size: 1.4rem;
-  text-align: center;
-}
-
-.hidden {
-  display: none;
 }
