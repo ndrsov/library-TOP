@@ -26,6 +26,12 @@ let myLibrary = [
 ];
 
 const bookContainer = document.getElementById('books-container');
+const formContainer = document.querySelector('.form-container');
+const addBookBtn = document.getElementById('btn-open-form');
+
+addBookBtn.addEventListener('click', () => {
+  formContainer.classList.toggle('hidden');
+});
 
 function Book(title, author, pages, read) {
   this.title = title;
