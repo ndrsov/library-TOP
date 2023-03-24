@@ -111,10 +111,23 @@ class Library {
 
 // Initialize the library
 const myLibrary = new Library();
-console.log(myLibrary);
 
-// Get the form element
+// Get the DOM elements
+const booksContainer = document.querySelector('#books-container');
+const toggleFormBtn = document.querySelector('#btn-open-form');
+const formContainer = document.querySelector('.form-container');
+const closeBtn = document.querySelector('.close-btn');
+
 const bookForm = document.getElementById('book-form');
+
+// Toggle form visibility
+const formToggler = () => {
+  formContainer.classList.toggle('hidden');
+  toggleFormBtn.classList.toggle('hidden');
+};
+
+toggleFormBtn.addEventListener('click', formToggler);
+closeBtn.addEventListener('click', formToggler);
 
 // Handle form submit event
 bookForm.addEventListener('submit', (e) => {
@@ -137,3 +150,10 @@ bookForm.addEventListener('submit', (e) => {
   // Reset the form
   bookForm.reset();
 });
+
+// Adding dummy data to Library class
+(() => {
+  for (const dummyBook of dummyData) {
+    myLibrary.addBook(dummyBook);
+  }
+})();
