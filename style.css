@@ -33,12 +33,18 @@ body {
   color: var(--oxford-blue);
 }
 
+/* Container elements  */
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2rem;
+}
+
+.hidden {
+  display: none;
 }
 
 h1 {

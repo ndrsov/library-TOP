@@ -1,62 +1,136 @@
-let myLibrary = [
+// Dummy db
+let dummyData = [
   {
-    title: 'The Hobbit',
-    author: 'J.R.R. Tolkien',
-    pages: 456,
-    readed: false,
-  },
-  {
-    title: 'To Kill a Mockingbird',
+    name: 'To Kill a Mockingbird',
     author: 'Harper Lee',
+    year: 1960,
     pages: 281,
     readed: true,
   },
   {
-    title: '1984',
+    name: '1984',
     author: 'George Orwell',
+    year: 1949,
     pages: 328,
     readed: false,
   },
   {
-    title: 'The Great Gatsby',
+    name: 'The Great Gatsby',
     author: 'F. Scott Fitzgerald',
+    year: 1925,
     pages: 180,
+    readed: true,
+  },
+  {
+    name: 'The Catcher in the Rye',
+    author: 'J.D. Salinger',
+    year: 1951,
+    pages: 224,
+    readed: false,
+  },
+  {
+    name: 'Brave New World',
+    author: 'Aldous Huxley',
+    year: 1932,
+    pages: 311,
+    readed: true,
+  },
+  {
+    name: 'The Hobbit',
+    author: 'J.R.R. Tolkien',
+    year: 1937,
+    pages: 310,
+    readed: true,
+  },
+  {
+    name: 'The Bell Jar',
+    author: 'Sylvia Plath',
+    year: 1963,
+    pages: 288,
+    readed: false,
+  },
+  {
+    name: 'Slaughterhouse-Five',
+    author: 'Kurt Vonnegut',
+    year: 1969,
+    pages: 215,
+    readed: true,
+  },
+  {
+    name: 'The Lord of the Rings',
+    author: 'J.R.R. Tolkien',
+    year: 1954,
+    pages: 1178,
+    readed: false,
+  },
+  {
+    name: 'Animal Farm',
+    author: 'George Orwell',
+    year: 1945,
+    pages: 112,
     readed: true,
   },
 ];
 
-const bookContainer = document.getElementById('books-container');
-const formContainer = document.querySelector('.form-container');
-const addBookBtn = document.getElementById('btn-open-form');
-
-addBookBtn.addEventListener('click', () => {
-  formContainer.classList.toggle('hidden');
-});
-
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
-
-Book.prototype.info = function () {
-  return `${title} by ${author}. ${pages} pages.${
-    this.readed === true ? 'readed.' : 'not read yet.'
-  }`;
-};
-
-function addBookToLibrary(input) {
-  myLibrary.push(input);
-}
-
-function displayBooks() {
-  for (const book of myLibrary) {
-    const newBook = document.createElement('div');
-    newBook.innerHTML = `<p>${book.title}</p>`;
-    newBook.classList.add('book-card');
-    bookContainer.append(newBook);
+// Define the Book class
+class Book {
+  constructor(title, author, pages, year) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.year = year;
   }
 }
 
-displayBooks();
+// Define the Library class
+class Library {
+  constructor() {
+    this.books = [];
+  }
+
+  addBook(book) {
+    this.books.push(book);
+  }
+
+  removeBook(book) {
+    const index = this.books.indexOf(book);
+    if (index !== -1) {
+      this.books.splice(index, 1);
+    }
+  }
+
+  getBook(index) {
+    return this.books[index];
+  }
+
+  getAllBooks() {
+    return this.books;
+  }
+}
+
+// Initialize the library
+const myLibrary = new Library();
+
+// Get the form element
+const bookForm = document.getElementById('book-form');
+
+// Handle form submit event
+bookForm.addEventListener('submit', (e) => {
+  // Prevent the default form submission
+  e.preventDefault();
+
+  // Get the form inputs
+  const title = bookForm.querySelector('#title').value;
+  const author = bookForm.querySelector('#author').value;
+  const pages = bookForm.querySelector('#pages').value;
+  const year = bookForm.querySelector('#year').value;
+
+  // Create a new Book object
+  const book = new Book(title, author, pages, year);
+
+  // Add the new book to the library
+  myLibrary.addBook(book);
+
+  // Reset the form
+  bookForm.reset();
+});
