@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap');
+
+:root {
+  /* CSS HEX */
+  --black: #000000ff;
+  --oxford-blue: #14213dff;
+  --orange-web: #fca311ff;
+  --orange-dark: #d4890e;
+  --platinum: #e5e5e5ff;
+  --white: #ffffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+  background-image: linear-gradient(
+    120deg,
+    var(--white) 0%,
+    var(--platinum) 100%
+  );
+  color: var(--oxford-blue);
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 4rem;
+}
+
+.btn {
+  font-family: inherit;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  background-color: #f3f7fe;
+  color: var(--orange-web);
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--orange-web);
+  box-shadow: 0 0 0 5px var(--orange-dark);
+  color: var(--white);
+}
+
+.btn-sm {
+  padding: 0.3rem 1rem;
+  font-size: 1.5rem;
+}
+
+.form-container {
+  font-size: 1.5rem;
+  background-color: var(--white);
+  border-radius: 30px;
+  padding: 2rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.form-container form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.form-control {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: bold;
+  line-height: 1.1;
+}
+
+.form-control input {
+  outline: none;
+  background-color: var(--platinum);
+  border: none;
+  border-radius: 10px;
+  height: 40px;
+  padding: 0.3rem 1rem;
+}
+
+input:active,
+input:focus {
+  border: 3px solid var(--orange-web);
+}
+
+input[type='checkbox'] {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.books-container {
+  background-color: var(--white);
+  border-radius: 30px;
+  margin: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.book-card {
+  background-color: var(--platinum);
+  width: 200px;
+  height: 300px;
+  padding: 1rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.book-card p {
+  font-size: 1.4rem;
+  text-align: center;
+}
