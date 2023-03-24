@@ -129,6 +129,8 @@ input[type='checkbox'] {
 
 .books-container {
   background-color: var(--white);
+  width: 95%;
+  min-height: 600px;
   border-radius: 30px;
   margin: 2rem;
   padding: 2rem;

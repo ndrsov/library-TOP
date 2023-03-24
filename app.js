@@ -74,11 +74,12 @@ let dummyData = [
 
 // Define the Book class
 class Book {
-  constructor(title, author, pages, year) {
+  constructor(title, author, pages, year, readed) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.year = year;
+    this.readed = readed;
   }
 }
 
@@ -110,6 +111,7 @@ class Library {
 
 // Initialize the library
 const myLibrary = new Library();
+console.log(myLibrary);
 
 // Get the form element
 const bookForm = document.getElementById('book-form');
@@ -124,9 +126,10 @@ bookForm.addEventListener('submit', (e) => {
   const author = bookForm.querySelector('#author').value;
   const pages = bookForm.querySelector('#pages').value;
   const year = bookForm.querySelector('#year').value;
+  const readed = bookForm.querySelector('#readed').value;
 
   // Create a new Book object
-  const book = new Book(title, author, pages, year);
+  const book = new Book(title, author, pages, year, readed);
 
   // Add the new book to the library
   myLibrary.addBook(book);
