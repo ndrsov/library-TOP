@@ -35,18 +35,24 @@ body {
   color: var(--oxford-blue);
 }
 
-/* Container elements  */
+/* Body elements  */
+.hidden {
+  display: none;
+}
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
 }
-
-.hidden {
-  display: none;
+.container header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 2rem;
 }
 
 h1 {
@@ -57,7 +63,7 @@ h1 {
 .btn {
   font-family: inherit;
   text-transform: uppercase;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   background-color: #f3f7fe;
   color: var(--orange-web);
   border: none;
