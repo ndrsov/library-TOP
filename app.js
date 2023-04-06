@@ -153,6 +153,7 @@ bookForm.addEventListener('submit', (e) => {
 
   // Reset the form
   bookForm.reset();
+  toggleFormVisibility();
 });
 
 // Adding dummy data to Library class
