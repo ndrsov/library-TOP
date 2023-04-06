@@ -81,9 +81,6 @@ class Book {
     this.year = year;
     this.readed = readed;
   }
-  createDOMEl() {
-    console.log('YOu got to me');
-  }
 }
 
 // Define the Library class
@@ -109,6 +106,21 @@ class Library {
 
   getAllBooks() {
     return this.books;
+  }
+  renderDB() {
+    for (const bookDom of this.books) {
+      const bookCard = document.createElement('div');
+      bookCard.innerHTML = `<p class='book-title'>${bookDom.title}</p>
+      <p class='book-author'>${bookDom.author}</p>
+      <p class='book-year'>${bookDom.year}</p>
+      <small class='book-pages'>${bookDom.pages} pages</small>
+      <span class='book-status'>${bookDom.readed ? 'Read' : 'Not Read'}</span>
+      <span class='book-remove-btn'>x</span>`;
+      bookCard.classList.add('book-card');
+
+      console.log(bookCard);
+      booksContainer.append(bookCard);
+    }
   }
 }
 
@@ -161,6 +173,7 @@ bookForm.addEventListener('submit', (e) => {
   for (const dummyBook of dummyData) {
     myLibrary.addBook(dummyBook);
   }
+  myLibrary.renderDB();
 })();
 
 // Book card markup
