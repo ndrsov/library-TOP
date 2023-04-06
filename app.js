@@ -81,6 +81,9 @@ class Book {
     this.year = year;
     this.readed = readed;
   }
+  createDOMEl() {
+    console.log('YOu got to me');
+  }
 }
 
 // Define the Library class
@@ -114,20 +117,21 @@ const myLibrary = new Library();
 
 // Get the DOM elements
 const booksContainer = document.querySelector('#books-container');
+const bookForm = document.getElementById('book-form');
+const overlay = document.querySelector('.overlay');
 const toggleFormBtn = document.querySelector('#btn-open-form');
 const formContainer = document.querySelector('.form-container');
 const closeBtn = document.querySelector('.close-btn');
 
-const bookForm = document.getElementById('book-form');
-
-// Toggle form visibility
-const formToggler = () => {
+// Reusable functions
+const toggleFormVisibility = () => {
+  overlay.classList.toggle('hidden');
   formContainer.classList.toggle('hidden');
-  toggleFormBtn.classList.toggle('hidden');
 };
 
-toggleFormBtn.addEventListener('click', formToggler);
-closeBtn.addEventListener('click', formToggler);
+// Show/Hide form
+toggleFormBtn.addEventListener('click', toggleFormVisibility);
+closeBtn.addEventListener('click', toggleFormVisibility);
 
 // Handle form submit event
 bookForm.addEventListener('submit', (e) => {
@@ -157,3 +161,13 @@ bookForm.addEventListener('submit', (e) => {
     myLibrary.addBook(dummyBook);
   }
 })();
+
+// Book card markup
+/* <div class='book-card'>
+  <p class='book-title'>This is a title</p>
+  <p class='book-author'>By this guy</p>
+  <p class='book-year'>1997</p>
+  <small class='book-pages'>123 pages</small>
+  <span class='book-status'>Read</span>
+  <span class='book-remove-btn'>x</span>
+</div>; */
