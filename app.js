@@ -107,19 +107,43 @@ class Library {
   getAllBooks() {
     return this.books;
   }
-  renderDB() {
-    for (const bookDom of this.books) {
-      const bookCard = document.createElement('div');
-      bookCard.innerHTML = `<p class='book-title'>${bookDom.title}</p>
-      <p class='book-author'>${bookDom.author}</p>
-      <p class='book-year'>${bookDom.year}</p>
-      <small class='book-pages'>${bookDom.pages} pages</small>
-      <span class='book-status'>${bookDom.readed ? 'Read' : 'Not Read'}</span>
-      <span class='book-remove-btn'>x</span>`;
-      bookCard.classList.add('book-card');
+  createNewEl(book) {
+    const bookCard = document.createElement('div');
+    const title = document.createElement('p');
+    const author = document.createElement('p');
+    const year = document.createElement('p');
+    const pages = document.createElement('small');
+    const readed = document.createElement('span');
+    const removeBtn = document.createElement('span');
 
-      console.log(bookCard);
-      booksContainer.append(bookCard);
+    // Add classes
+    bookCard.classList.add('book-card');
+    title.classList.add('book-title');
+    author.classList.add('book-author');
+    year.classList.add('book-year');
+    pages.classList.add('book-pages');
+    readed.classList.add('book-status');
+    readed.classList.add('book-status');
+    book.readed ? '' : readed.classList.add('unread');
+    removeBtn.classList.add('book-remove-btn');
+
+    // Add correct data
+    title.textContent = book.title;
+    author.textContent = book.author;
+    year.textContent = book.year;
+    pages.textContent = book.pages;
+    readed.textContent = book.readed ? 'Read' : 'Not Read';
+    removeBtn.textContent = 'x';
+
+    // Create book element
+    bookCard.append(title, author, year, pages, readed, removeBtn);
+    // Appen final element
+    booksContainer.append(bookCard);
+  }
+
+  renderDB() {
+    for (const book of this.books) {
+      this.createNewEl(book);
     }
   }
 }
@@ -162,6 +186,7 @@ bookForm.addEventListener('submit', (e) => {
 
   // Add the new book to the library
   myLibrary.addBook(book);
+  myLibrary.createNewEl(book);
 
   // Reset the form
   bookForm.reset();
@@ -175,13 +200,3 @@ bookForm.addEventListener('submit', (e) => {
   }
   myLibrary.renderDB();
 })();
-
-// Book card markup
-/* <div class='book-card'>
-  <p class='book-title'>This is a title</p>
-  <p class='book-author'>By this guy</p>
-  <p class='book-year'>1997</p>
-  <small class='book-pages'>123 pages</small>
-  <span class='book-status'>Read</span>
-  <span class='book-remove-btn'>x</span>
-</div>; */
