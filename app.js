@@ -179,7 +179,7 @@ bookForm.addEventListener('submit', (e) => {
   const author = bookForm.querySelector('#author').value;
   const pages = bookForm.querySelector('#pages').value;
   const year = bookForm.querySelector('#year').value;
-  const readed = bookForm.querySelector('#readed').value;
+  const readed = bookForm.querySelector('#readed').checked;
 
   // Create a new Book object
   const book = new Book(title, author, pages, year, readed);
