@@ -151,7 +151,7 @@ class Library {
 // Initialize the library
 const myLibrary = new Library();
 
-// Get the DOM elements
+// Get the Fom DOM elements
 const booksContainer = document.querySelector('#books-container');
 const bookForm = document.getElementById('book-form');
 const overlay = document.querySelector('.overlay');
@@ -210,5 +210,18 @@ btnsArray.forEach((item, i) => {
     const itemCard = e.target.parentElement;
     myLibrary.removeBook(deleteBook);
     booksContainer.removeChild(itemCard);
+  });
+});
+
+// Change readed status from book
+const readedStatus = document.querySelectorAll('.book-status');
+const toggleArray = [...readedStatus];
+toggleArray.forEach((item, i) => {
+  item.addEventListener('click', function (e) {
+    const foundBook = myLibrary.getBook(i);
+    const foundStatus = e.target;
+    foundBook.readed = !foundBook.readed;
+    foundStatus.textContent = foundBook.readed ? 'Read' : 'Not Read';
+    foundStatus.classList.toggle('unread');
   });
 });
