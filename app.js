@@ -200,3 +200,15 @@ bookForm.addEventListener('submit', (e) => {
   }
   myLibrary.renderDB();
 })();
+
+// Delete book from library and DB
+const removeBookBtns = document.querySelectorAll('.book-remove-btn');
+const btnsArray = [...removeBookBtns];
+btnsArray.forEach((item, i) => {
+  item.addEventListener('click', function (e) {
+    const deleteBook = myLibrary.getBook(i);
+    const itemCard = e.target.parentElement;
+    myLibrary.removeBook(deleteBook);
+    booksContainer.removeChild(itemCard);
+  });
+});
