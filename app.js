@@ -191,6 +191,7 @@ bookForm.addEventListener('submit', (e) => {
   // Reset the form
   bookForm.reset();
   toggleFormVisibility();
+  addInteractiveness();
 });
 
 // Adding dummy data to Library class
@@ -199,29 +200,32 @@ bookForm.addEventListener('submit', (e) => {
     myLibrary.addBook(dummyBook);
   }
   myLibrary.renderDB();
+  addInteractiveness();
 })();
 
-// Delete book from library and DB
-const removeBookBtns = document.querySelectorAll('.book-remove-btn');
-const btnsArray = [...removeBookBtns];
-btnsArray.forEach((item, i) => {
-  item.addEventListener('click', function (e) {
-    const deleteBook = myLibrary.getBook(i);
-    const itemCard = e.target.parentElement;
-    myLibrary.removeBook(deleteBook);
-    booksContainer.removeChild(itemCard);
+function addInteractiveness() {
+  // Delete book from library and DB
+  const removeBookBtns = document.querySelectorAll('.book-remove-btn');
+  const btnsArray = [...removeBookBtns];
+  btnsArray.forEach((item, i) => {
+    item.addEventListener('click', function (e) {
+      const deleteBook = myLibrary.getBook(i);
+      const itemCard = e.target.parentElement;
+      console.log(itemCard);
+      myLibrary.removeBook(deleteBook);
+      booksContainer.removeChild(itemCard);
+    });
   });
-});
-
-// Change readed status from book
-const readedStatus = document.querySelectorAll('.book-status');
-const toggleArray = [...readedStatus];
-toggleArray.forEach((item, i) => {
-  item.addEventListener('click', function (e) {
-    const foundBook = myLibrary.getBook(i);
-    const foundStatus = e.target;
-    foundBook.readed = !foundBook.readed;
-    foundStatus.textContent = foundBook.readed ? 'Read' : 'Not Read';
-    foundStatus.classList.toggle('unread');
+  // Change readed status from book
+  const readedStatus = document.querySelectorAll('.book-status');
+  const toggleArray = [...readedStatus];
+  toggleArray.forEach((item, i) => {
+    item.addEventListener('click', function (e) {
+      const foundBook = myLibrary.getBook(i);
+      const foundStatus = e.target;
+      foundBook.readed = !foundBook.readed;
+      foundStatus.textContent = foundBook.readed ? 'Read' : 'Not Read';
+      foundStatus.classList.toggle('unread');
+    });
   });
-});
+}
