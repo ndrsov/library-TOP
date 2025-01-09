@@ -1,2 +1,3 @@
 # library-TOP
-Library test from The Odin Project.
+
+Library project based on The Odin Project course.
